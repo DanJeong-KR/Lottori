@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F2C8A058379C4BF0CFB0FD2 /* Pods_Lottori.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D7C168F5F0AE68E5D52EC21 /* Pods_Lottori.framework */; };
 		8E71B2A6257CE29E00B13F58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E71B2A5257CE29E00B13F58 /* AppDelegate.swift */; };
 		8E71B2A8257CE29E00B13F58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E71B2A7257CE29E00B13F58 /* SceneDelegate.swift */; };
 		8E71B2AA257CE29E00B13F58 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E71B2A9257CE29E00B13F58 /* MainViewController.swift */; };
@@ -23,6 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E814A2B25D43A5CBE8810F5 /* Pods-Lottori.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lottori.release.xcconfig"; path = "Target Support Files/Pods-Lottori/Pods-Lottori.release.xcconfig"; sourceTree = "<group>"; };
+		6FB774EFECBDB0208441E48B /* Pods-Lottori.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lottori.debug.xcconfig"; path = "Target Support Files/Pods-Lottori/Pods-Lottori.debug.xcconfig"; sourceTree = "<group>"; };
+		8D7C168F5F0AE68E5D52EC21 /* Pods_Lottori.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lottori.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E71B2A2257CE29E00B13F58 /* Lottori.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lottori.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E71B2A5257CE29E00B13F58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E71B2A7257CE29E00B13F58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,17 +49,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F2C8A058379C4BF0CFB0FD2 /* Pods_Lottori.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E69BDDA6EA8A1FD2AD936A8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6FB774EFECBDB0208441E48B /* Pods-Lottori.debug.xcconfig */,
+				2E814A2B25D43A5CBE8810F5 /* Pods-Lottori.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		4707A5FD592BCFE6CA7B7DBB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8D7C168F5F0AE68E5D52EC21 /* Pods_Lottori.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8E71B299257CE29E00B13F58 = {
 			isa = PBXGroup;
 			children = (
 				8E71B2A4257CE29E00B13F58 /* Lottori */,
 				8E71B2A3257CE29E00B13F58 /* Products */,
+				1E69BDDA6EA8A1FD2AD936A8 /* Pods */,
+				4707A5FD592BCFE6CA7B7DBB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -151,9 +176,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8E71B2B6257CE2A500B13F58 /* Build configuration list for PBXNativeTarget "Lottori" */;
 			buildPhases = (
+				34DDEC187863713FCD2D9503 /* [CP] Check Pods Manifest.lock */,
 				8E71B29E257CE29E00B13F58 /* Sources */,
 				8E71B29F257CE29E00B13F58 /* Frameworks */,
 				8E71B2A0257CE29E00B13F58 /* Resources */,
+				6850BC3EE6BD185F23F0C8C9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -209,6 +236,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		34DDEC187863713FCD2D9503 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Lottori-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6850BC3EE6BD185F23F0C8C9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Lottori/Pods-Lottori-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Lottori/Pods-Lottori-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Lottori/Pods-Lottori-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8E71B29E257CE29E00B13F58 /* Sources */ = {
@@ -366,6 +435,7 @@
 		};
 		8E71B2B7257CE2A500B13F58 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6FB774EFECBDB0208441E48B /* Pods-Lottori.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -384,6 +454,7 @@
 		};
 		8E71B2B8257CE2A500B13F58 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E814A2B25D43A5CBE8810F5 /* Pods-Lottori.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
