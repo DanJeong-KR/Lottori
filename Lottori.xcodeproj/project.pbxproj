@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -62,7 +62,6 @@
 				6FB774EFECBDB0208441E48B /* Pods-Lottori.debug.xcconfig */,
 				2E814A2B25D43A5CBE8810F5 /* Pods-Lottori.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -129,8 +128,8 @@
 		8E71B2BB257CEB0600B13F58 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				8E71B2BE257CEC2900B13F58 /* Main */,
 				8E71B2C1257CEC2900B13F58 /* ModuleEnum.swift */,
+				8E71B2BE257CEC2900B13F58 /* Main */,
 			);
 			path = Module;
 			sourceTree = "<group>";
