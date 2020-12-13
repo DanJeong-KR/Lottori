@@ -11,11 +11,13 @@ import UIKit
 enum Module {
 
     case Main
+    case QRScanner
 
 
     var type: UIViewController.Type {
         switch self {
         case .Main:                 return MainViewController.self
+        case .QRScanner:          return QRScannerViewController.self
         }
     }
 

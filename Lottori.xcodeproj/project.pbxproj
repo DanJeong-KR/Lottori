@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6F2C8A058379C4BF0CFB0FD2 /* Pods_Lottori.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D7C168F5F0AE68E5D52EC21 /* Pods_Lottori.framework */; };
+		8E6D25A7258607EA00E6A575 /* Lottery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D25A6258607EA00E6A575 /* Lottery.swift */; };
 		8E71B2A6257CE29E00B13F58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E71B2A5257CE29E00B13F58 /* AppDelegate.swift */; };
 		8E71B2A8257CE29E00B13F58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E71B2A7257CE29E00B13F58 /* SceneDelegate.swift */; };
 		8E71B2AA257CE29E00B13F58 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E71B2A9257CE29E00B13F58 /* MainViewController.swift */; };
@@ -19,15 +20,17 @@
 		8E71B2CE257CEC9600B13F58 /* UIView+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E71B2C9257CEC9600B13F58 /* UIView+extensions.swift */; };
 		8E71B2D0257CEC9600B13F58 /* UIAlertController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E71B2CB257CEC9600B13F58 /* UIAlertController+extensions.swift */; };
 		8E71B2D1257CEC9600B13F58 /* UIColor+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E71B2CC257CEC9600B13F58 /* UIColor+extensions.swift */; };
-		8E71B2D8257CECAF00B13F58 /* GlobalUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E71B2D2257CECAE00B13F58 /* GlobalUtils.swift */; };
+		8E71B2D8257CECAF00B13F58 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E71B2D2257CECAE00B13F58 /* Logger.swift */; };
 		8E71B2D9257CECAF00B13F58 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E71B2D3257CECAE00B13F58 /* Constants.swift */; };
-		8E71B2E4257FC17A00B13F58 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E71B2E3257FC17A00B13F58 /* HeaderView.swift */; };
+		8E71B2E92584CB8B00B13F58 /* QRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E71B2E82584CB8B00B13F58 /* QRScannerViewController.swift */; };
+		8E71B2EB2584CBA000B13F58 /* QRScannerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E71B2EA2584CBA000B13F58 /* QRScannerViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2E814A2B25D43A5CBE8810F5 /* Pods-Lottori.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lottori.release.xcconfig"; path = "Target Support Files/Pods-Lottori/Pods-Lottori.release.xcconfig"; sourceTree = "<group>"; };
 		6FB774EFECBDB0208441E48B /* Pods-Lottori.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lottori.debug.xcconfig"; path = "Target Support Files/Pods-Lottori/Pods-Lottori.debug.xcconfig"; sourceTree = "<group>"; };
 		8D7C168F5F0AE68E5D52EC21 /* Pods_Lottori.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lottori.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E6D25A6258607EA00E6A575 /* Lottery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Lottery.swift; path = Lottori/Module/QRScanner/Lottery.swift; sourceTree = SOURCE_ROOT; };
 		8E71B2A2257CE29E00B13F58 /* Lottori.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lottori.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E71B2A5257CE29E00B13F58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E71B2A7257CE29E00B13F58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,9 +44,10 @@
 		8E71B2C9257CEC9600B13F58 /* UIView+extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+extensions.swift"; sourceTree = "<group>"; };
 		8E71B2CB257CEC9600B13F58 /* UIAlertController+extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+extensions.swift"; sourceTree = "<group>"; };
 		8E71B2CC257CEC9600B13F58 /* UIColor+extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+extensions.swift"; sourceTree = "<group>"; };
-		8E71B2D2257CECAE00B13F58 /* GlobalUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalUtils.swift; sourceTree = "<group>"; };
+		8E71B2D2257CECAE00B13F58 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		8E71B2D3257CECAE00B13F58 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		8E71B2E3257FC17A00B13F58 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		8E71B2E82584CB8B00B13F58 /* QRScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewController.swift; sourceTree = "<group>"; };
+		8E71B2EA2584CBA000B13F58 /* QRScannerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QRScannerViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				8E71B2D3257CECAE00B13F58 /* Constants.swift */,
-				8E71B2D2257CECAE00B13F58 /* GlobalUtils.swift */,
+				8E71B2D2257CECAE00B13F58 /* Logger.swift */,
 				8E71B2C5257CEC7200B13F58 /* Extensions */,
 			);
 			path = Util;
@@ -131,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				8E71B2C1257CEC2900B13F58 /* ModuleEnum.swift */,
+				8E71B2E72584CB5500B13F58 /* QRScanner */,
 				8E71B2BE257CEC2900B13F58 /* Main */,
 			);
 			path = Module;
@@ -146,6 +151,7 @@
 		8E71B2BD257CEBE700B13F58 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8E6D25A6258607EA00E6A575 /* Lottery.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -153,7 +159,6 @@
 		8E71B2BE257CEC2900B13F58 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				8E71B2E2257FC14500B13F58 /* View */,
 				8E71B2A9257CE29E00B13F58 /* MainViewController.swift */,
 				8E71B2AB257CE29E00B13F58 /* MainViewController.storyboard */,
 			);
@@ -171,12 +176,13 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		8E71B2E2257FC14500B13F58 /* View */ = {
+		8E71B2E72584CB5500B13F58 /* QRScanner */ = {
 			isa = PBXGroup;
 			children = (
-				8E71B2E3257FC17A00B13F58 /* HeaderView.swift */,
+				8E71B2E82584CB8B00B13F58 /* QRScannerViewController.swift */,
+				8E71B2EA2584CBA000B13F58 /* QRScannerViewController.storyboard */,
 			);
-			path = View;
+			path = QRScanner;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E71B2B2257CE2A500B13F58 /* LaunchScreen.storyboard in Resources */,
+				8E71B2EB2584CBA000B13F58 /* QRScannerViewController.storyboard in Resources */,
 				8E71B2AF257CE2A500B13F58 /* Assets.xcassets in Resources */,
 				8E71B2AD257CE29E00B13F58 /* MainViewController.storyboard in Resources */,
 			);
@@ -294,6 +301,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E6D25A7258607EA00E6A575 /* Lottery.swift in Sources */,
 				8E71B2D0257CEC9600B13F58 /* UIAlertController+extensions.swift in Sources */,
 				8E71B2AA257CE29E00B13F58 /* MainViewController.swift in Sources */,
 				8E71B2D1257CEC9600B13F58 /* UIColor+extensions.swift in Sources */,
@@ -301,10 +309,10 @@
 				8E71B2A6257CE29E00B13F58 /* AppDelegate.swift in Sources */,
 				8E71B2D9257CECAF00B13F58 /* Constants.swift in Sources */,
 				8E71B2A8257CE29E00B13F58 /* SceneDelegate.swift in Sources */,
-				8E71B2E4257FC17A00B13F58 /* HeaderView.swift in Sources */,
 				8E71B2C7257CEC7C00B13F58 /* UIViewController+extensions.swift in Sources */,
+				8E71B2E92584CB8B00B13F58 /* QRScannerViewController.swift in Sources */,
 				8E71B2CE257CEC9600B13F58 /* UIView+extensions.swift in Sources */,
-				8E71B2D8257CECAF00B13F58 /* GlobalUtils.swift in Sources */,
+				8E71B2D8257CECAF00B13F58 /* Logger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
