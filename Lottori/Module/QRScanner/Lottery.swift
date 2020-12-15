@@ -18,7 +18,7 @@ struct Lottery: Decodable {
   let ballNumber4: Int
   let ballNumber5: Int
   let ballNumber6: Int
-  let ballBonus: Int
+  let ballNumberBonus: Int
   let totalSellAmount: Int
   let firstWinAmount: Int
   let firstWinCount: Int
@@ -33,7 +33,7 @@ struct Lottery: Decodable {
     case ballNumber4 = "drwtNo4"
     case ballNumber5 = "drwtNo5"
     case ballNumber6 = "drwtNo6"
-    case ballBonus = "bnusNo"
+    case ballNumberBonus = "bnusNo"
     case totalSellAmount = "totSellamnt"
     case firstWinAmount = "firstWinamnt"
     case firstWinCount = "firstPrzwnerCo"

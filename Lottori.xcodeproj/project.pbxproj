@@ -24,6 +24,7 @@
 		8E71B2D9257CECAF00B13F58 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E71B2D3257CECAE00B13F58 /* Constants.swift */; };
 		8E71B2E92584CB8B00B13F58 /* QRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E71B2E82584CB8B00B13F58 /* QRScannerViewController.swift */; };
 		8E71B2EB2584CBA000B13F58 /* QRScannerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E71B2EA2584CBA000B13F58 /* QRScannerViewController.storyboard */; };
+		8E9C02FF25888DBB00179ADF /* BallWrapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9C02FE25888DBB00179ADF /* BallWrapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		8E71B2D3257CECAE00B13F58 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8E71B2E82584CB8B00B13F58 /* QRScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewController.swift; sourceTree = "<group>"; };
 		8E71B2EA2584CBA000B13F58 /* QRScannerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QRScannerViewController.storyboard; sourceTree = "<group>"; };
+		8E9C02FE25888DBB00179ADF /* BallWrapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallWrapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 			children = (
 				8E71B2A9257CE29E00B13F58 /* MainViewController.swift */,
 				8E71B2AB257CE29E00B13F58 /* MainViewController.storyboard */,
+				8E9C02FE25888DBB00179ADF /* BallWrapView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E6D25A7258607EA00E6A575 /* Lottery.swift in Sources */,
+				8E9C02FF25888DBB00179ADF /* BallWrapView.swift in Sources */,
 				8E71B2D0257CEC9600B13F58 /* UIAlertController+extensions.swift in Sources */,
 				8E71B2AA257CE29E00B13F58 /* MainViewController.swift in Sources */,
 				8E71B2D1257CEC9600B13F58 /* UIColor+extensions.swift in Sources */,
