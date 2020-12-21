@@ -17,6 +17,8 @@ final class LotteryLoader {
   let defaults = UserDefaults.standard
   var startUnitCount = 900
   let semaphore = DispatchSemaphore(value: 0)
+  let downloadGroup = DispatchGroup()
+  var loadProgress: Float = 0
   
   private init() {
     initLottery()
@@ -32,26 +34,42 @@ final class LotteryLoader {
   func load() {
     // 최신 데이터 있는지 체크
     if lotteries.count != 0 {
-      logger(lotteries)
-    }else {
+      print(lotteries.count)
+    } else {
       // 첫 입장일 경우
       DispatchQueue.global(qos: .userInitiated).async {
         let latestCountNumber = self.findLatestCountNumber()
         
+        self.loadLotteryDatas(by: latestCountNumber)
       }
     }
   }
-  
-  func syncLottery() {
+  private func syncData() {
     let encoder = JSONEncoder()
     guard lotteries.count != 0 else {return}
     if let encoded = try? encoder.encode(lotteries) {
         defaults.set(encoded, forKey: "lotteries")
     }
   }
+  
+  private func fetchLottery(inCountNumber countNumber: Int) -> Promise<Lottery> {
+    return Promise {
+      seal in
+        AF.request("https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=\(countNumber)").validate().responseDecodable(of: Lottery.self) { (response) in
+          switch response.result {
+          case .success:
+            guard let lottery = response.value else {
+              return seal.reject(AFError.responseValidationFailed(reason: .dataFileNil)) }
+            seal.fulfill(lottery)
+          case let .failure(error):
+            seal.reject(error)
+          }
+        }
+    }
+  }
 }
 
-// MARK: - Private functions
+// MARK: - Finding Latest Count Number
 extension LotteryLoader {
   private func findLatestCountNumber() -> Int {
       let (left, right) = self.findBSearchEdgeValues()
@@ -63,7 +81,6 @@ extension LotteryLoader {
       }
       return self.binarySearch(left: left, right: right)
   }
-  
   private func findBSearchEdgeValues() -> (Int, Int) {
     var startCountNumber = startUnitCount
     var endCountNumber: Int!
@@ -133,7 +150,6 @@ extension LotteryLoader {
     
     
   }
-  
   private func awaitFetchLottery(in countNumber: Int, doneBlock: @escaping (Lottery) -> (), catchBlock: @escaping () -> ()) {
       self.fetchLottery(inCountNumber: countNumber).done { lottery in
         doneBlock(lottery)
@@ -146,20 +162,27 @@ extension LotteryLoader {
       self.semaphore.wait()
     
   }
-  
-  private func fetchLottery(inCountNumber countNumber: Int) -> Promise<Lottery> {
-    return Promise {
-      seal in
-        AF.request("https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=\(countNumber)").validate().responseDecodable(of: Lottery.self) { (response) in
-          switch response.result {
-          case .success:
-            guard let lottery = response.value else {
-              return seal.reject(AFError.responseValidationFailed(reason: .dataFileNil)) }
-            seal.fulfill(lottery)
-          case let .failure(error):
-            seal.reject(error)
-          }
-        }
+}
+
+// MARK: - Loading All Lottery Datas
+extension LotteryLoader {
+  private func loadLotteryDatas(by countNumber: Int) {
+    var lotteries: [Lottery] = []
+    DispatchQueue.concurrentPerform(iterations: countNumber) { (index) in
+      downloadGroup.enter()
+      self.fetchLottery(inCountNumber: index + 1).done { lottery in
+        lotteries.append(lottery)
+        self.loadProgress += 1.0 / Float(countNumber)
+        print("loading progress", self.loadProgress)
+        self.downloadGroup.leave()
+      }.catch { (error) in
+        print(error)
+        self.downloadGroup.leave()
+      }
+    }
+    downloadGroup.notify(queue: DispatchQueue.main) {
+      self.lotteries = lotteries
+      self.syncData()
     }
   }
 }
