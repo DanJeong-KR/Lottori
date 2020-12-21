@@ -7,4 +7,5 @@ target 'Lottori' do
   # Pods for Lottori
   pod 'Alamofire', '~> 5.2'
   pod 'SnapKit', '~> 5.0.0'
+  pod "PromiseKit", "~> 6.8"
 end

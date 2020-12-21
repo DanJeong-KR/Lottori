@@ -24,7 +24,6 @@ class BallWrapView: UIView {
     self.subviews.forEach { (subview) in
       guard subview.bounds.height != 0 else { return }
       subview.roundView()
-      logger(subview.bounds)
     }
   }
   
