@@ -88,13 +88,13 @@ class MainViewController: UIViewController {
       ballLabels[index].text = String(ballNumber)
     }
     let lastBallIndex = ballLabels.count - 1
-    ballLabels[lastBallIndex].text = String(lottery.ballNumberBonus)
+    ballLabels[lastBallIndex].text = String(lottery.ballNumberBonus!)
     ballLabels[lastBallIndex - 1].text = "+"
   }
   
-  
-  
   @IBAction func onClickReset(_ sender: UIButton) {
+    UserDefaults.standard.removeObject(forKey: "lotteries")
+    
   }
   
   @IBAction func onClickQRCode(_ sender: UIButton) {
@@ -107,8 +107,13 @@ class MainViewController: UIViewController {
 extension MainViewController {
   func fetchLatestBall() {
     AF.request("https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=903").validate().responseDecodable(of: Lottery.self) { (response) in
-      guard let lottery = response.value else { return }
-      self.setBallContents(lottery: lottery)
+      switch response.result {
+      case .success:
+        guard let lottery = response.value else { return }
+        self.setBallContents(lottery: lottery)
+      case let .failure(error):
+        logger(error)
+      }
     }
   }
 }
