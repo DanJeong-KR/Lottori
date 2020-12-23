@@ -93,7 +93,7 @@ class MainViewController: UIViewController {
   }
   
   @IBAction func onClickReset(_ sender: UIButton) {
-    UserDefaults.standard.removeObject(forKey: "lotteries")
+    LotteryLoader.shared.removeAll()
     
   }
   
