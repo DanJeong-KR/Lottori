@@ -23,6 +23,7 @@ struct Lottery: Codable {
   let firstWinAmount: Int?
   let firstWinCount: Int?
   
+  
   enum CodingKeys: String, CodingKey {
     case returnValue
     case countNumber = "drwNo"

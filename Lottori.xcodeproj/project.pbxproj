@@ -26,13 +26,14 @@
 		8E71B2EB2584CBA000B13F58 /* QRScannerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E71B2EA2584CBA000B13F58 /* QRScannerViewController.storyboard */; };
 		8E9C02FF25888DBB00179ADF /* BallWrapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9C02FE25888DBB00179ADF /* BallWrapView.swift */; };
 		8E9C03062588AB3200179ADF /* LotteryLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9C03052588AB3200179ADF /* LotteryLoader.swift */; };
+		8E9C033225945C6000179ADF /* Displayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9C033125945C6000179ADF /* Displayable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2E814A2B25D43A5CBE8810F5 /* Pods-Lottori.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lottori.release.xcconfig"; path = "Target Support Files/Pods-Lottori/Pods-Lottori.release.xcconfig"; sourceTree = "<group>"; };
 		6FB774EFECBDB0208441E48B /* Pods-Lottori.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lottori.debug.xcconfig"; path = "Target Support Files/Pods-Lottori/Pods-Lottori.debug.xcconfig"; sourceTree = "<group>"; };
 		8D7C168F5F0AE68E5D52EC21 /* Pods_Lottori.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lottori.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8E6D25A6258607EA00E6A575 /* Lottery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Lottery.swift; path = Lottori/Module/QRScanner/Lottery.swift; sourceTree = SOURCE_ROOT; };
+		8E6D25A6258607EA00E6A575 /* Lottery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Lottery.swift; path = Lottori/Model/Lottery.swift; sourceTree = SOURCE_ROOT; };
 		8E71B2A2257CE29E00B13F58 /* Lottori.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lottori.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E71B2A5257CE29E00B13F58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E71B2A7257CE29E00B13F58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,6 +53,7 @@
 		8E71B2EA2584CBA000B13F58 /* QRScannerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QRScannerViewController.storyboard; sourceTree = "<group>"; };
 		8E9C02FE25888DBB00179ADF /* BallWrapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallWrapView.swift; sourceTree = "<group>"; };
 		8E9C03052588AB3200179ADF /* LotteryLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryLoader.swift; sourceTree = "<group>"; };
+		8E9C033125945C6000179ADF /* Displayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Displayable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,8 +106,7 @@
 		8E71B2A4257CE29E00B13F58 /* Lottori */ = {
 			isa = PBXGroup;
 			children = (
-				8E71B2BD257CEBE700B13F58 /* Model */,
-				8E71B2BC257CEBCA00B13F58 /* Network */,
+				8E9C033025945C0400179ADF /* Model */,
 				8E71B2BB257CEB0600B13F58 /* Module */,
 				8E71B2BA257CEAFD00B13F58 /* Util */,
 				8E71B2B9257CE43800B13F58 /* SupportFiles */,
@@ -146,21 +147,6 @@
 			path = Module;
 			sourceTree = "<group>";
 		};
-		8E71B2BC257CEBCA00B13F58 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		8E71B2BD257CEBE700B13F58 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				8E6D25A6258607EA00E6A575 /* Lottery.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		8E71B2BE257CEC2900B13F58 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +175,15 @@
 				8E71B2EA2584CBA000B13F58 /* QRScannerViewController.storyboard */,
 			);
 			path = QRScanner;
+			sourceTree = "<group>";
+		};
+		8E9C033025945C0400179ADF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8E6D25A6258607EA00E6A575 /* Lottery.swift */,
+				8E9C033125945C6000179ADF /* Displayable.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,6 +315,7 @@
 				8E71B2C7257CEC7C00B13F58 /* UIViewController+extensions.swift in Sources */,
 				8E71B2E92584CB8B00B13F58 /* QRScannerViewController.swift in Sources */,
 				8E71B2CE257CEC9600B13F58 /* UIView+extensions.swift in Sources */,
+				8E9C033225945C6000179ADF /* Displayable.swift in Sources */,
 				8E71B2D8257CECAF00B13F58 /* Logger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

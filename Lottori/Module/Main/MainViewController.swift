@@ -82,7 +82,6 @@ class MainViewController: UIViewController {
     }
   }
     
-  
   private func setBallContents(lottery: Lottery) {
     for (index, ballNumber) in lottery.balls.enumerated() {
       ballLabels[index].text = String(ballNumber)
@@ -100,7 +99,6 @@ class MainViewController: UIViewController {
   @IBAction func onClickQRCode(_ sender: UIButton) {
     show(Module.QRScanner.vc, sender: nil)
   }
-  
 }
 
 // MARK: - Network
