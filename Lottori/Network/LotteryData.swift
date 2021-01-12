@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Lottery: Codable {
+struct LotteryData: Codable {
   let returnValue: String
   let countNumber: Int?
   let countDate: String?
@@ -61,7 +61,7 @@ struct Lottery: Codable {
   }
 }
 
-extension Lottery {
+extension LotteryData {
   var balls:[Int] {
     return [ballNumber1!, ballNumber2!, ballNumber3!, ballNumber4!, ballNumber5!, ballNumber6!]
   }
