@@ -12,8 +12,7 @@ import PromiseKit
 
 final class LotteryLoader {
   static let shared = LotteryLoader()
-  private var unsafeLotteries: [Lottery] = []
-  
+  private var unsafeLotteries: [LotteryData] = []
   private let defaults = UserDefaults.standard
   private var startBSearchUnitCount = 900
   private let semaphore = DispatchSemaphore(value: 0)
@@ -24,7 +23,7 @@ final class LotteryLoader {
     initLottery()
   }
   private func initLottery () {
-      if let savedLottery = defaults.object(forKey: "lotteries") as? Data {
+      if let savedLottery = defaults.object(forKey: "lotteryDatas") as? Data {
         getByDefault(data: savedLottery)
       }
   }
@@ -32,7 +31,7 @@ final class LotteryLoader {
 // MARK: - Interface
 extension LotteryLoader {
   // Get
-  var lotteries: [Lottery] {
+  var lotteries: [LotteryData] {
     return unsafeLotteries
   }
   
@@ -43,12 +42,12 @@ extension LotteryLoader {
   // Remove
   func removeAll() {
     DispatchQueue.main.async {
-      self.defaults.removeObject(forKey: "lotteries")
+      self.defaults.removeObject(forKey: "lotteryDatas")
       self.unsafeLotteries = []
     }
   }
   
-  func startLoader() {
+  func startLoader(completionHandler: (() -> ())? = nil) {
     DispatchQueue.global(qos: .userInitiated).async {
       print("startLoader - start",self.lotteries.count)
       if self.lotteries.count != 0 {
@@ -68,6 +67,7 @@ extension LotteryLoader {
         self.saveToDefault()
     }
       print("startLoader - end",self.lotteries.count)
+      completionHandler?()
     }
   }
 }
@@ -78,19 +78,19 @@ extension LotteryLoader {
     let encoder = JSONEncoder()
     guard unsafeLotteries.count != 0 else {return}
     if let encoded = try? encoder.encode(unsafeLotteries) {
-        defaults.set(encoded, forKey: "lotteries")
+        defaults.set(encoded, forKey: "lotteryDatas")
     }
   }
   
   private func getByDefault (data: Data) {
     let decoder = JSONDecoder()
-    if let loadedLottery = try? decoder.decode([Lottery].self, from: data) {
+    if let loadedLottery = try? decoder.decode([LotteryData].self, from: data) {
       unsafeLotteries = loadedLottery
     }
   }
   
   private func loadLotteries(from: Int = 1 ,to: Int) {
-    var lotteries: [Lottery] = []
+    var lotteries: [LotteryData] = []
     let iterationCount = to - from + 1
     DispatchQueue.concurrentPerform(iterations:iterationCount ) { index in
       downloadGroup.enter()
@@ -193,7 +193,7 @@ extension LotteryLoader {
     
     
   }
-  private func awaitFetchLottery(in countNumber: Int, doneBlock: @escaping (Lottery) -> (), catchBlock:  @escaping () -> ()) {
+  private func awaitFetchLottery(in countNumber: Int, doneBlock: @escaping (LotteryData) -> (), catchBlock:  @escaping () -> ()) {
       self.fetchLottery(inCountNumber: countNumber).done { lottery in
         doneBlock(lottery)
       }.ensure {
@@ -209,10 +209,10 @@ extension LotteryLoader {
 
 // MARK: - Private Methods
 extension LotteryLoader {
-  private func fetchLottery(inCountNumber countNumber: Int) -> Promise<Lottery> {
+  private func fetchLottery(inCountNumber countNumber: Int) -> Promise<LotteryData> {
     return Promise {
       seal in
-        AF.request("https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=\(countNumber)").validate().responseDecodable(of: Lottery.self) { (response) in
+      AF.request(Constants.Url.Base + "\(countNumber)").validate().responseDecodable(of: LotteryData.self) { (response) in
           switch response.result {
           case .success:
             guard let lottery = response.value else {

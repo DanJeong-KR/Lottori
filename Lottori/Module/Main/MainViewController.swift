@@ -12,6 +12,8 @@ import SnapKit
 
 class MainViewController: UIViewController {
   
+  private var lottori: Lottori? = nil
+
   @IBOutlet weak var refreshButton: UIButton!
   @IBOutlet weak var ballWrapView: UIView!
   
@@ -25,6 +27,9 @@ class MainViewController: UIViewController {
     // Do any additional setup after loading the view.
     fetchLatestBall()
     createBalls()
+    LotteryLoader.shared.startLoader {
+      self.lottori = Lottori(loadedLotteries: LotteryLoader.shared.lotteries)
+    }
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -82,7 +87,7 @@ class MainViewController: UIViewController {
     }
   }
     
-  private func setBallContents(lottery: Lottery) {
+  private func setBallContents(lottery: LotteryData) {
     for (index, ballNumber) in lottery.balls.enumerated() {
       ballLabels[index].text = String(ballNumber)
     }
@@ -104,7 +109,7 @@ class MainViewController: UIViewController {
 // MARK: - Network
 extension MainViewController {
   func fetchLatestBall() {
-    AF.request("https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=903").validate().responseDecodable(of: Lottery.self) { (response) in
+    AF.request(Constants.Url.Base + "903").validate().responseDecodable(of: LotteryData.self) { (response) in
       switch response.result {
       case .success:
         guard let lottery = response.value else { return }
